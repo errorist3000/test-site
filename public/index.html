@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserAgent Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>UserAgent Information</h1>
+<pre id="output"></pre>
+
+<script>
+    const output = document.getElementById('output');
+
+    const userAgentInfo = {
+        appCodeName: navigator.appCodeName,
+        appName: navigator.appName,
+        appVersion: navigator.appVersion,
+        platform: navigator.platform,
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        languages: navigator.languages,
+        cookieEnabled: navigator.cookieEnabled,
+        onLine: navigator.onLine,
+        hardwareConcurrency: navigator.hardwareConcurrency,
+        maxTouchPoints: navigator.maxTouchPoints,
+        vendor: navigator.vendor,
+        deviceMemory: navigator.deviceMemory,
+        product: navigator.product,
+        productSub: navigator.productSub,
+        mimeTypes: [...navigator.mimeTypes].map(mime => mime.type),
+        plugins: [...navigator.plugins].map(plugin => plugin.name),
+    };
+
+    output.textContent = JSON.stringify(userAgentInfo, null, 2);
+</script>
+</body>
+</html>
