@@ -22,8 +22,26 @@
 <h1>UserAgent Information</h1>
 <pre id="output"></pre>
 
+<div class="result" id="browser-detection">Determining browser...</div>
+
 <script>
     const output = document.getElementById('output');
+    const result = document.getElementById('browser-detection');
+
+    const METAMASK_BROWSER_MARKER = 'WebView MetaMaskMobile';
+    const IN_APP_BROWSER_MARKER = 'wv';
+
+    const userAgent = navigator.userAgent;
+    const isMobileMetamask = userAgent.includes(METAMASK_BROWSER_MARKER);
+    const isMobileXVerse = !isMobileMetamask && userAgent.includes(IN_APP_BROWSER_MARKER);
+
+    if (isMobileMetamask) {
+        result.textContent = 'METAMASK!!!';
+    } else if (isMobileXVerse) {
+        result.textContent = 'X-VERSE!!!';
+    } else {
+        result.textContent = '--OTHER--';
+    }
 
     const userAgentInfo = {
         appCodeName: navigator.appCodeName,
